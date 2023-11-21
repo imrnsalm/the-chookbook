@@ -24,3 +24,7 @@ http://localhost:3000/
 http://localhost:3000/recipes
 ```
 ![usage](/public/images/recipes.png)
+
+---
+**All recipes are from [Budget Bytes](https://www.budgetbytes.com/)**
+
