@@ -4,7 +4,9 @@ const db = require('../db');
 
 router.use((req, res, next) => {
     let recipes = db.recipes;
-    if (!recipes) return next('route');
+    if (!recipes) {
+        return next('route');
+    }
     req.recipes = recipes;
     next();
 });
