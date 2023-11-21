@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+  h1= title
+  hr
+  each recipe in recipes
+      h2 #{recipe.name}
+      h3 Ingredients:
+      each ingredient in recipe.ingredients
+        ul
+          li #{ingredient}
+      h3 Instructions:
+      each instruction in recipe.instructions 
+        ul 
+          li #{instruction}
+          
