@@ -1,6 +1,6 @@
 'use strict'
 
-var recipes = [];
+const recipes = [];
 
 recipes.push({
     name: 'Soft boiled eggs',
