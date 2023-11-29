@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const recipesList = require('../db');
 
 router.use((req, res, next) => {
-    let recipes = db.recipes;
+    let recipes = recipesList.recipes;
     if (!recipes) {
         return next('route');
     }
