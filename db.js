@@ -18,17 +18,18 @@ const db = new sqlite3.Database(':memory:');
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS recipe (
-        name TEXT PRIMARY KEY
+        name TEXT NOT NULL PRIMARY KEY,
+        UNIQUE(name)
     );
     CREATE TABLE IF NOT EXISTS ingredient (
-        recipe_name TEXT,
-        ingredient_description TEXT,
+        recipe_name TEXT NOT NULL,
+        ingredient_description TEXT NOT NULL,
         FOREIGN KEY (recipe_name)
             REFERENCES recipe (name)
     );
     CREATE TABLE IF NOT EXISTS instruction (
-        recipe_name TEXT,
-        instruction_description TEXT,
+        recipe_name TEXT NOT NULL,
+        instruction_description TEXT NOT NULL,
         FOREIGN KEY (recipe_name)
             REFERENCES recipe (name)
     );`, (err, tables) => {
