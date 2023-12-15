@@ -3,14 +3,17 @@ extends layout
 block content
   h1= title
   hr
-  each recipe in recipes
-      h2 #{recipe.name}
-      h3 Ingredients:
-      each ingredient in recipe.ingredients
+  ul
+    each val, key in recipes
+      li
+        h2 #{key}
+        h3 Ingredients
         ul
-          li #{ingredient}
-      h3 Instructions:
-      each instruction in recipe.instructions 
-        ul 
-          li #{instruction}
-          
+          each ingredient in val.ingredients
+            li #{ingredient}
+        h3 Instructions
+        ol
+          each instruction in val.instructions
+            li #{instruction}
+      br
+      br

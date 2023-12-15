@@ -25,12 +25,12 @@ router.get('/', (req, res, next) => {
                 }
                 req.instructions = rows;
 
-                recipes = {};
-                req.recipes.forEach(recipe => recipes[recipe.name] = { ingredients: [], instructions: {} });
-                req.ingredients.forEach(ingredient => recipes[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
-                req.instructions.forEach(instruction => recipes[instruction.recipe_name].instructions[instruction.instruction_number - 1] = instruction.instruction_description);
+                data = {};
+                req.recipes.forEach(recipe => data[recipe.name] = { ingredients: [], instructions: [] });
+                req.ingredients.forEach(ingredient => data[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
+                req.instructions.forEach(instruction => data[instruction.recipe_name].instructions.push(instruction.instruction_description));
                 
-                res.send(recipes);
+                res.render('recipes', { title: 'Recipes', recipes: data });
             });
         });
     });
