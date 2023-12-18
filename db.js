@@ -6,12 +6,14 @@ db.exec(`
         name TEXT NOT NULL PRIMARY KEY,
         UNIQUE(name)
     );
+
     CREATE TABLE IF NOT EXISTS ingredient (
         recipe_name TEXT NOT NULL,
         ingredient_description TEXT NOT NULL,
         FOREIGN KEY (recipe_name)
             REFERENCES recipe (name)
     );
+    
     CREATE TABLE IF NOT EXISTS instruction (
         recipe_name TEXT NOT NULL,
         instruction_number INTEGER NOT NULL,
