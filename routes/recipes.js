@@ -26,9 +26,9 @@ router.get('/', (req, res, next) => {
         req.instructions = rows;
 
         let data = {};
-        req.recipes.forEach(recipe => data[recipe.name] = { ingredients: [], instructions: [] });
+        req.recipes.forEach(recipe => data[recipe.name] = { ingredients: [], instructions: {} });
         req.ingredients.forEach(ingredient => data[ingredient.recipe_name].ingredients.push(ingredient.ingredient_description));
-        req.instructions.forEach(instruction => data[instruction.recipe_name].instructions.push(instruction.instruction_description));
+        req.instructions.forEach(instruction => data[instruction.recipe_name].instructions[instruction.instruction_number] = instruction.instruction_description);
         
         res.header("Content-Type", 'application/json');
         res.send(JSON.stringify(data, null, 2));
