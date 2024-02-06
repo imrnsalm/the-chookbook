@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db');
 
 /* GET recipes listing. */
-router.get('/', (req, res, next) => {
+router.get('/all', (req, res, next) => {
   db.all('SELECT * FROM recipe', (err, rows) => {
     if (err) {
       console.error(err.message);
